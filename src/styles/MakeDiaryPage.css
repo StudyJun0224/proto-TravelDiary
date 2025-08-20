@@ -1,0 +1,48 @@
+
+
+.lower-canvas{
+    position: initial !important;
+}
+
+.Toolbar{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: var(--background-neutral-container);
+    padding: 8px;
+    border-radius: 4px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 16px;
+}
+
+#container{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 16px;
+    background-color: var(--gray-200);
+    min-height: 100vh;
+}
+
+#canvas{
+    border: 1px solid var(--border-neutral-subtle);
+    z-index: 2;
+}
+
+.settings{
+    position: fixed;
+    right: 16px;
+    top: 50%;
+    gap: 8px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-neutral-container);
+    text-align: left;
+}

@@ -1,0 +1,63 @@
+.home-container {
+    height: 100vh;
+    width: 80vw;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-info {
+    
+    height: 25%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 30px;
+}
+
+.profile-box{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background-size: cover;
+    background-image: url(../assets/icon/user-default.png);
+    background-position: center;
+    display : inline-block;
+}
+
+.user-name{
+    line-height: 70px;
+    height: 70px;
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.divider {
+    border-top: 1px solid #ccc;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.home-content{
+    height: 75%;
+    width: 100%;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.home-create-button {
+    width: 200px;
+    height: 50px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
