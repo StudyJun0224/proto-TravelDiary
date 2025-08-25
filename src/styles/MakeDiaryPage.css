@@ -5,16 +5,14 @@
 }
 
 .Toolbar{
+    width: 250px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 8px;
     background-color: var(--background-neutral-container);
-    padding: 8px;
     border-radius: 4px;
     position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 16px;
 }
 
 #container{
@@ -25,7 +23,6 @@
     text-align: center;
     align-items: center;
     justify-content: center;
-    padding: 100px 16px;
     background-color: var(--gray-200);
     min-height: 100vh;
 }
