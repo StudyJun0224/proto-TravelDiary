@@ -4,17 +4,6 @@
     position: initial !important;
 }
 
-.Toolbar{
-    width: 250px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background-color: var(--background-neutral-container);
-    border-radius: 4px;
-    position: fixed;
-}
-
 #container{
     display: flex;
     height: 100vh;
@@ -25,6 +14,48 @@
     justify-content: center;
     background-color: var(--gray-200);
     min-height: 100vh;
+}
+
+.Toolbar{
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: var(--background-neutral-container);
+    border-radius: 4px;
+    position: fixed;
+    left: 0px;
+}
+
+.toolbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.divideline{
+    border: 0.5px solid var(--border-neutral-subtle);
+    margin: 4px 0;
+    width: 90%;
+}
+
+.buttonbox{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.icon-with-label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
 #canvas{

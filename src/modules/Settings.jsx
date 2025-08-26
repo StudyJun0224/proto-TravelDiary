@@ -130,6 +130,23 @@ function Settings({canvas}){
                     />
                 </>
             )}
+            {selectedObject && selectedObject.type === "circle" && (
+                <>
+                  <Input
+                    fluid
+                    label = "Diameter"
+                    value = {diameter}
+                    onChange = {handleDiameterChange}
+                  />
+                  <Input
+                    fluid
+                    label = "Color"
+                    type = "color"
+                    value = {color}
+                    onChange = {handleColorChange}
+                    />
+                </>
+            )}
         </div>
     );
 }
