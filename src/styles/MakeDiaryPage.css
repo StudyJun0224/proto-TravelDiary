@@ -36,6 +36,19 @@
     margin: 16px 0;
 }
 
+.toolbox__top{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#toolbutton__image{
+    position: absolute;
+    right: 20px;
+}
+
 .divideline{
     border: 0.5px solid var(--border-neutral-subtle);
     margin: 4px 0;
@@ -58,6 +71,12 @@
     padding: 0;
 }
 
+
+.toolbutton{
+    position: absolute;
+    right: 20px;
+}
+
 #canvas{
     border: 1px solid var(--border-neutral-subtle);
     z-index: 2;
@@ -73,4 +92,30 @@
     flex-direction: column;
     background-color: var(--background-neutral-container);
     text-align: left;
+}
+
+.fileicon{
+    position:absolute;
+    top: 50%;
+}
+
+.imagetoolbar{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagetoolbar__top{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.imagetoolbar__label{
+    margin-right: 50px;
+    margin-left: 10px;
 }
