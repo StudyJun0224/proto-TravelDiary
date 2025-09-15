@@ -74,14 +74,38 @@ function MakeDiaryPage() {
         }
     }
 
+    const addImage = (imgElement) => {
+        const imgObj = new FabricImage(imgElement, {
+            left: 100,
+            top: 100,
+            scaleX: 0.5,
+            scaleY: 0.5,
+        });
+        canvas.add(imgObj);
+    };
+
+    const handleFile = (file) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const imgElement = new Image();
+            imgElement.src = e.target.result;
+            imgElement.onload = () => addImage(imgElement);
+        };
+        reader.readAsDataURL(file);
+    };
+
     const handleImageFile = (file) => {
         if (!canvas || !file) {
             console.log("No file selected or canvas not initialized");
             return;
         }
 
+        console.log("File selected:", file);
+
+
         const reader = new FileReader();
         reader.onload = (e) => {
+            console.log(e.target.result);
             const imgObj = new FabricImage(e.target.result, {
                 left: 100,
                 top: 100,
@@ -131,7 +155,7 @@ function MakeDiaryPage() {
                         accept="image/*"
                         /*style={{ display: 'none' }}*/
                         ref={fileInputRef}
-                        onChange={(e) => handleImageFile(e.target.files[0])}
+                        onChange={(e) => handleFile(e.target.files[0])}
                     />
                 </div>
 
