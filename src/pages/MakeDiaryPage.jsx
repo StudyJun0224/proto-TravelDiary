@@ -1,5 +1,5 @@
-import { React, useRef, useEffect, useState } from 'react';
-import { Rect, Canvas, Triangle, Circle } from 'fabric';
+import { useRef, useEffect, useState } from 'react';
+import { Circle, Triangle, Rect, Canvas, FabricImage } from 'fabric';
 import { Button, IconButton } from "blocksin-system";
 import { SquareIcon, TriangleIcon, CircleIcon, HamburgerMenuIcon, ShadowOuterIcon, SizeIcon, LineHeight2Icon, ArrowLeftIcon, FilePlusIcon, PlusCircleIcon } from "sebikostudio-icons";
 import Settings from "../modules/Settings";
@@ -74,6 +74,27 @@ function MakeDiaryPage() {
         }
     }
 
+    const handleImageFile = (file) => {
+        if (!canvas || !file) {
+            console.log("No file selected or canvas not initialized");
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const imgObj = new FabricImage(e.target.result, {
+                left: 100,
+                top: 100,
+                angle: 0,
+                padding: 10,
+                cornersize: 10,
+                hasRotatingPoint: true
+            });
+
+        };
+        reader.readAsDataURL(file);
+    };
+
     const WTF = () => {
         return (
             <p>📒</p>
@@ -90,45 +111,30 @@ function MakeDiaryPage() {
             </div>
         );
     }
-    
-    const handleImageFile = (file) => {
-        if (!canvas || !file) return;
-
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            fabric.Image.fromURL(e.target.result, (img) => {
-                img.set({
-                    left: 100,
-                    top: 100,
-                    scaleX: 0.5,
-                    scaleY: 0.5,
-                });
-                canvas.add(img);
-            });
-        };
-        reader.readAsDataURL(file);
-    };
 
 
+    // 이미지 추가시 해당 컴포넌트로 전환
     const ImageToolbar = () => {
         return (
             <div className="imagetoolbar">
                 <div className="imagetoolbar__top">
                     <span className="imagetoolbar__label">이미지 저장소</span>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        style={{ display: 'none' }}
-                        ref={fileInputRef}
-                        onChange={(e) => handleImageFile(e.target.files[0])}
-                    />
+
                     <IconButton onClick={() => fileInputRef.current.click()} variant="ghost" size="medium">
                         <PlusCircleIcon />
                     </IconButton>
-                    <IconButton onClick={() => {setShowImage(false)}} variant="ghost" size="medium">
+                    <IconButton onClick={() => { setShowImage(false) }} variant="ghost" size="medium">
                         <ArrowLeftIcon />
                     </IconButton>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        /*style={{ display: 'none' }}*/
+                        ref={fileInputRef}
+                        onChange={(e) => handleImageFile(e.target.files[0])}
+                    />
                 </div>
+
                 <hr className="divideline" />
 
                 <div
