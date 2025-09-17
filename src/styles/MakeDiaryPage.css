@@ -94,9 +94,34 @@
     text-align: left;
 }
 
+.dropbox{
+    height: 100%;
+    width: 100%;
+}
+.grid-container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 30%);
+  grid-auto-rows: 100px; /* 열 크기를 픽셀 단위로 */
+  gap: 12px; /* 아이템 간격 */
+  height: 100%; /* 부모 높이에 맞추기 */
+  align-content: start; /* 부모 안에서 위쪽부터 차곡차곡 */
+  background: transparent;
+  padding: 16px;
+}
+.grid-item {
+    background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 12px;
+  text-align: center;
+}
+
 .fileicon{
-    position:absolute;
+    position: absolute;
     top: 50%;
+    justify-self: center;
+    
 }
 
 .imagetoolbar{

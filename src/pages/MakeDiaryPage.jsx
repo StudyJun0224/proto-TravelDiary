@@ -10,6 +10,7 @@ function MakeDiaryPage() {
     const canvasRef = useRef(null);
     const [canvas, setCanvas] = useState(null);
     const [showImage, setShowImage] = useState(false); // test
+    const [imageItem, setImageItem] = useState([]);
 
     const fileInputRef = useRef(null);
 
@@ -136,6 +137,20 @@ function MakeDiaryPage() {
         );
     }
 
+    const items = Array.from({ length: 10 }, (_, i) => `Item ${i + 1}`);
+
+    function GridLayout() {
+        return (
+            <div className="grid-container">
+                {items.map((item, idx) => (
+                    <div key={idx} className="grid-item">
+                        {item}
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
 
     // 이미지 추가시 해당 컴포넌트로 전환
     const ImageToolbar = () => {
@@ -162,16 +177,19 @@ function MakeDiaryPage() {
                 <hr className="divideline" />
 
                 <div
-                    className="fileicon"
+                    className="dropbox"
                     onDragOver={(e) => e.preventDefault()}
                     onDrop={(e) => {
                         e.preventDefault();
                         const file = e.dataTransfer.files[0];
-                        handleImageFile(file);
+                        handleFile(file);
                     }}
                 >
-                    <FilePlusIcon style={{ width: '50px', height: '50px', color: '#d3d3d3' }} />
-                    <p style={{ color: '#d3d3d3' }}>파일을 끌어다 놓아보세요!</p>
+                    <GridLayout></GridLayout>
+                    <div className="fileicon">
+                        <FilePlusIcon style={{ width: '50px', height: '50px', color: '#d3d3d3' }} />
+                        <p style={{ color: '#d3d3d3' }}>파일을 끌어다 놓아보세요!</p>
+                    </div>
                 </div>
             </div>
         );
