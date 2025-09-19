@@ -10,7 +10,7 @@ function MakeDiaryPage() {
     const canvasRef = useRef(null);
     const [canvas, setCanvas] = useState(null);
     const [showImage, setShowImage] = useState(false); // test
-    const [imageItem, setImageItem] = useState([]);
+
 
     const fileInputRef = useRef(null);
 
@@ -91,31 +91,13 @@ function MakeDiaryPage() {
             const imgElement = new Image();
             imgElement.src = e.target.result;
             imgElement.onload = () => addImage(imgElement);
-        };
-        reader.readAsDataURL(file);
-    };
-
-    const handleImageFile = (file) => {
-        if (!canvas || !file) {
-            console.log("No file selected or canvas not initialized");
-            return;
-        }
-
-        console.log("File selected:", file);
-
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            console.log(e.target.result);
-            const imgObj = new FabricImage(e.target.result, {
-                left: 100,
-                top: 100,
-                angle: 0,
-                padding: 10,
-                cornersize: 10,
-                hasRotatingPoint: true
-            });
-
+            setImageSrc((prevList)=>[...prevList, imgElement]);
+            setImageName((prevList)=>[...prevList, file.name]);
+            const newImage = {
+                src: imgElement.src,
+                name: file.name
+            };
+            setImageInfo((prevList)=>[...prevList, newImage]);
         };
         reader.readAsDataURL(file);
     };
@@ -137,14 +119,17 @@ function MakeDiaryPage() {
         );
     }
 
-    const items = Array.from({ length: 10 }, (_, i) => `Item ${i + 1}`);
+    const [imageSrc, setImageSrc] = useState([]);
+    const [imageName, setImageName] = useState([]);
+    const [imageInfo, setImageInfo] = useState([]);
 
     function GridLayout() {
         return (
             <div className="grid-container">
-                {items.map((item, idx) => (
+                {imageInfo.map((item, idx) => (
                     <div key={idx} className="grid-item">
-                        {item}
+                        <img src={item.src} className="grid-image"/>
+                        <p>{item.name}</p>
                     </div>
                 ))}
             </div>
@@ -168,7 +153,7 @@ function MakeDiaryPage() {
                     <input
                         type="file"
                         accept="image/*"
-                        /*style={{ display: 'none' }}*/
+                        style={{ display: 'none' }}
                         ref={fileInputRef}
                         onChange={(e) => handleFile(e.target.files[0])}
                     />
