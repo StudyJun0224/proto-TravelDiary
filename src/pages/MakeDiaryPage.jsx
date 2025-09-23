@@ -18,8 +18,8 @@ function MakeDiaryPage() {
     useEffect(() => {
         if (canvasRef.current) {
             const initCanvas = new Canvas(canvasRef.current, {
-                width: 1000,
-                height: 1000,
+                width: 500,
+                height: 500,
             });
 
             initCanvas.backgroundColor = '#fff';
@@ -81,6 +81,7 @@ function MakeDiaryPage() {
             top: 100,
             scaleX: 0.5,
             scaleY: 0.5,
+            // png 파일 어케 하지
             backgroundColor: 'transparent',
         });
         canvas.add(imgObj);
@@ -120,9 +121,11 @@ function MakeDiaryPage() {
         return (
             <div className="grid-container">
                 {imageInfo.map((item, idx) => (
-                    <div key={idx} className="grid-item" onClick={()=>{item.focus = true; console.log(item.focus) }}>
+                    <div key={idx} className="grid-item">
+                        <div className="grid-item-top">
                         <img src={item.src} className="grid-image" />
-                        <p>{outputImageName(item.name, item.focus)}</p>
+                        </div>
+                        <span className='grid-filename'>{item.name}</span>
                     </div>
                 ))}
             </div>

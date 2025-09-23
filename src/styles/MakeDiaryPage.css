@@ -1,8 +1,8 @@
-.lower-canvas{
+.lower-canvas {
     position: initial !important;
 }
 
-#container{
+#container {
     display: flex;
     height: 100vh;
     width: 100vw;
@@ -14,7 +14,7 @@
     min-height: 100vh;
 }
 
-.Toolbar{
+.Toolbar {
     width: 250px;
     height: 100vh;
     display: flex;
@@ -26,7 +26,7 @@
     left: 0px;
 }
 
-.toolbox{
+.toolbox {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,7 +34,7 @@
     margin: 16px 0;
 }
 
-.toolbox__top{
+.toolbox__top {
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -42,25 +42,25 @@
     justify-content: flex-start;
 }
 
-#toolbutton__image{
+#toolbutton__image {
     position: absolute;
     right: 20px;
 }
 
-.divideline{
+.divideline {
     border: 0.5px solid var(--border-neutral-subtle);
     margin: 4px 0;
     width: 90%;
 }
 
-.buttonbox{
+.buttonbox {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-.icon-with-label{
+.icon-with-label {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,17 +70,17 @@
 }
 
 
-.toolbutton{
+.toolbutton {
     position: absolute;
     right: 20px;
 }
 
-#canvas{
+#canvas {
     border: 1px solid var(--border-neutral-subtle);
     z-index: 2;
 }
 
-.settings{
+.settings {
     position: fixed;
     right: 16px;
     top: 50%;
@@ -92,41 +92,66 @@
     text-align: left;
 }
 
-.dropbox{
+.dropbox {
     height: 100%;
     width: 100%;
 }
+
 .grid-container {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(3, 30%);
-  grid-auto-rows: 100px; /* 열 크기를 픽셀 단위로 */
-  gap: 12px; /* 아이템 간격 */
-  height: 100%; /* 부모 높이에 맞추기 */
-  align-content: start; /* 부모 안에서 위쪽부터 차곡차곡 */
-  background: transparent;
-  padding: 16px;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 30%);
+    grid-auto-rows: 100px;
+    /* 열 크기를 픽셀 단위로 */
+    gap: 12px;
+    /* 아이템 간격 */
+    height: 100%;
+    /* 부모 높이에 맞추기 */
+    align-content: start;
+    /* 부모 안에서 위쪽부터 차곡차곡 */
+    background: transparent;
+    padding: 16px;
 }
+
 .grid-item {
+    display: flex;
+    flex-direction: column;
     background-color: transparent;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 12px;
-  text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
 }
-.grid-image{
+
+.gird-item-top {
+    flex: 7;
+    width: 100%;
+
+}
+
+.grid-image {
     width: 100%;
     height: auto;
 }
 
-.fileicon{
+.grid-filename {
+    flex: 3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50px;
+    /* 여기서 몇 글자 길이 대신 픽셀로 제어 */
+    display: inline-block;
+}
+
+.fileicon {
     position: absolute;
     top: 50%;
     justify-self: center;
-    
+
 }
 
-.imagetoolbar{
+.imagetoolbar {
     height: 100%;
     width: 100%;
     display: flex;
@@ -134,7 +159,7 @@
     align-items: center;
 }
 
-.imagetoolbar__top{
+.imagetoolbar__top {
     padding-top: 10px;
     display: flex;
     flex-direction: row;
@@ -142,7 +167,7 @@
 
 }
 
-.imagetoolbar__label{
+.imagetoolbar__label {
     margin-right: 50px;
     margin-left: 10px;
 }
