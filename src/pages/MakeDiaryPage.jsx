@@ -18,8 +18,8 @@ function MakeDiaryPage() {
     useEffect(() => {
         if (canvasRef.current) {
             const initCanvas = new Canvas(canvasRef.current, {
-                width: 500,
-                height: 500,
+                width: 1000,
+                height: 1000,
             });
 
             initCanvas.backgroundColor = '#fff';
@@ -81,6 +81,7 @@ function MakeDiaryPage() {
             top: 100,
             scaleX: 0.5,
             scaleY: 0.5,
+            backgroundColor: 'transparent',
         });
         canvas.add(imgObj);
     };
@@ -91,32 +92,24 @@ function MakeDiaryPage() {
             const imgElement = new Image();
             imgElement.src = e.target.result;
             imgElement.onload = () => addImage(imgElement);
-            setImageSrc((prevList)=>[...prevList, imgElement]);
-            setImageName((prevList)=>[...prevList, file.name]);
+            setImageSrc((prevList) => [...prevList, imgElement]);
+            setImageName((prevList) => [...prevList, file.name]);
             const newImage = {
                 src: imgElement.src,
-                name: file.name
+                name: file.name,
+                focus: false,
             };
-            setImageInfo((prevList)=>[...prevList, newImage]);
+            setImageInfo((prevList) => [...prevList, newImage]);
         };
         reader.readAsDataURL(file);
     };
 
-    const WTF = () => {
-        return (
-            <p>📒</p>
-        );
-    }
-
-    const IconWithLabel = ({ icon: Icon, label, onClick }) => {
-        return (
-            <div className="icon-with-label" onClick={onClick}>
-                <IconButton variant="ghost" size="medium">
-                    <Icon />
-                </IconButton>
-                <span>{label}</span>
-            </div>
-        );
+    const outputImageName = (name, focus) => {
+        console.log(name, focus);
+        if (name.length > 10 && !focus) {
+            return name.slice(0, 10) + '...';
+        }
+        return name;
     }
 
     const [imageSrc, setImageSrc] = useState([]);
@@ -127,9 +120,9 @@ function MakeDiaryPage() {
         return (
             <div className="grid-container">
                 {imageInfo.map((item, idx) => (
-                    <div key={idx} className="grid-item">
-                        <img src={item.src} className="grid-image"/>
-                        <p>{item.name}</p>
+                    <div key={idx} className="grid-item" onClick={()=>{item.focus = true; console.log(item.focus) }}>
+                        <img src={item.src} className="grid-image" />
+                        <p>{outputImageName(item.name, item.focus)}</p>
                     </div>
                 ))}
             </div>
@@ -176,6 +169,23 @@ function MakeDiaryPage() {
                         <p style={{ color: '#d3d3d3' }}>파일을 끌어다 놓아보세요!</p>
                     </div>
                 </div>
+            </div>
+        );
+    }
+
+    const WTF = () => {
+        return (
+            <p>📒</p>
+        );
+    }
+
+    const IconWithLabel = ({ icon: Icon, label, onClick }) => {
+        return (
+            <div className="icon-with-label" onClick={onClick}>
+                <IconButton variant="ghost" size="medium">
+                    <Icon />
+                </IconButton>
+                <span>{label}</span>
             </div>
         );
     }
