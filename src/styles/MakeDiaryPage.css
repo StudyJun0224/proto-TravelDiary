@@ -119,29 +119,34 @@
     background-color: transparent;
     border: 1px solid #ccc;
     border-radius: 6px;
-    padding: 12px;
+    padding: 5px;
     text-align: center;
+    
 }
 
-.gird-item-top {
+.grid-item-top {
     flex: 7;
     width: 100%;
 
 }
 
 .grid-image {
+    align-self: center;
+    justify-self: center;
     width: 100%;
     height: auto;
 }
 
 .grid-filename {
-    flex: 3;
+    /* -----------오늘의 배움--------- */
+    font-size: 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 50px;
+    max-width: 70px;
     /* 여기서 몇 글자 길이 대신 픽셀로 제어 */
     display: inline-block;
+    flex: 3;
 }
 
 .fileicon {

@@ -105,14 +105,6 @@ function MakeDiaryPage() {
         reader.readAsDataURL(file);
     };
 
-    const outputImageName = (name, focus) => {
-        console.log(name, focus);
-        if (name.length > 10 && !focus) {
-            return name.slice(0, 10) + '...';
-        }
-        return name;
-    }
-
     const [imageSrc, setImageSrc] = useState([]);
     const [imageName, setImageName] = useState([]);
     const [imageInfo, setImageInfo] = useState([]);
@@ -121,7 +113,7 @@ function MakeDiaryPage() {
         return (
             <div className="grid-container">
                 {imageInfo.map((item, idx) => (
-                    <div key={idx} className="grid-item">
+                    <div key={idx} className="grid-item" tabIndex={0} onClick={() => 추가버튼컴포넌트가시화및이미지정보전달함수(imageSrc[idx])}>
                         <div className="grid-item-top">
                         <img src={item.src} className="grid-image" />
                         </div>
